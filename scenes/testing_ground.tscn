@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqx78ks20gadk"]
+[gd_scene load_steps=14 format=3 uid="uid://dqx78ks20gadk"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_1awqq"]
+[ext_resource type="PackedScene" uid="uid://cc6ngdqie8o8c" path="res://addons/godot-xr-tools/effects/vignette.tscn" id="2_5ycv8"]
 [ext_resource type="PackedScene" uid="uid://bdwmserhqai5h" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_hand_low.tscn" id="2_l0hva"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="3_5ycv8"]
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="3_dxq5i"]
@@ -24,6 +25,10 @@ size = Vector2(10, 10)
 size = Vector3(10, 1, 10)
 
 [node name="TestingGround" instance=ExtResource("1_1awqq")]
+
+[node name="Vignette" parent="XROrigin3D/XRCamera3D" index="0" instance=ExtResource("2_5ycv8")]
+auto_rotation_limit = 10.0
+auto_velocity_limit = 3.0
 
 [node name="LeftPhysicsHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("2_l0hva")]
 
