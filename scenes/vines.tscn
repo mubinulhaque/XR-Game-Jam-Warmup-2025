@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq1nmq6fjnbd1"]
+
+[ext_resource type="Script" uid="uid://bpkdobhhvl45s" path="res://scripts/vines.gd" id="1_tfq28"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ks3uh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks3uh"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tfq28"]
+material = SubResource("StandardMaterial3D_ks3uh")
+height = 1.0
+radial_segments = 8
+
+[node name="Vines" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("1_tfq28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_ks3uh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_tfq28")
+
+[connection signal="pointer_event" from="." to="." method="_on_pointer_event"]
