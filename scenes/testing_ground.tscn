@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqx78ks20gadk"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_1awqq"]
+[ext_resource type="PackedScene" uid="uid://bdwmserhqai5h" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_hand_low.tscn" id="2_l0hva"]
+[ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="3_dxq5i"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="4_b6ix4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ycv8"]
+
+[sub_resource type="Sky" id="Sky_m5cqn"]
+sky_material = SubResource("ProceduralSkyMaterial_5ycv8")
+
+[sub_resource type="Environment" id="Environment_8eoxv"]
+background_mode = 2
+sky = SubResource("Sky_m5cqn")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1awqq"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0hva"]
+size = Vector3(10, 1, 10)
+
+[node name="TestingGround" instance=ExtResource("1_1awqq")]
+
+[node name="LeftPhysicsHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("2_l0hva")]
+
+[node name="RightPhysicsHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("3_dxq5i")]
+
+[node name="StartXR" parent="." index="1" instance=ExtResource("4_b6ix4")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="2"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
+environment = SubResource("Environment_8eoxv")
+
+[node name="Floor" type="StaticBody3D" parent="." index="4"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" index="0"]
+mesh = SubResource("PlaneMesh_1awqq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_l0hva")
