@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqx78ks20gadk"]
+[gd_scene load_steps=15 format=3 uid="uid://dqx78ks20gadk"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_1awqq"]
 [ext_resource type="PackedScene" uid="uid://cc6ngdqie8o8c" path="res://addons/godot-xr-tools/effects/vignette.tscn" id="2_5ycv8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="3_5ycv8"]
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="3_dxq5i"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="4_b6ix4"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_8eoxv"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="5_m5cqn"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_8eoxv"]
 
@@ -34,6 +35,9 @@ auto_velocity_limit = 3.0
 
 [node name="MovementDirect" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("5_m5cqn")]
 strafe = true
+
+[node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("5_8eoxv")]
+teleport_button_action = "primary_click"
 
 [node name="RightPhysicsHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("3_dxq5i")]
 
