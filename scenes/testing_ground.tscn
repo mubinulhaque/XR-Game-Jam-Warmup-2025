@@ -27,12 +27,12 @@ size = Vector3(10, 1, 10)
 
 [node name="LeftPhysicsHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("2_l0hva")]
 
-[node name="MovementTurn" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("3_5ycv8")]
+[node name="MovementDirect" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("5_m5cqn")]
+strafe = true
 
 [node name="RightPhysicsHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("3_dxq5i")]
 
-[node name="MovementDirect" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("5_m5cqn")]
-strafe = true
+[node name="MovementTurn" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("3_5ycv8")]
 
 [node name="PlayerBody" parent="XROrigin3D" index="3" instance=ExtResource("6_8eoxv")]
 
