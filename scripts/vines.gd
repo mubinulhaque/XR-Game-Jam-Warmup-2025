@@ -3,6 +3,8 @@ extends XRToolsInteractableBody
 ## Rate at which vines grow and shrink
 const _GROWTH_RATE := 2.0
 
+## Initial height of the vine
+@export var _initial_vine_size := 1.0
 ## Minimum height a vine can be at
 @export var _min_vine_size := 1.0
 ## Maximum height a vine can be at
@@ -29,6 +31,11 @@ func  _ready() -> void:
 		_vine_mesh = _mesh.mesh
 	else:
 		printerr("Cannot set vine mesh! " + str(_mesh.mesh))
+	
+	_vine_col.size.y = _initial_vine_size
+	_vine_mesh.height = _initial_vine_size
+	_collider.position.y += _initial_vine_size / 2
+	_mesh.position.y += _initial_vine_size / 2
 
 
 func _process(delta: float) -> void:
@@ -45,12 +52,12 @@ func _process(delta: float) -> void:
 	
 	_collider.position.y = clamp(
 			_collider.position.y + (_current_growth_rate / 2 * delta),
-			_min_vine_size / 2,
+			_min_vine_size,
 			_max_vine_size / 2
 	)
 	_mesh.position.y = clamp(
 			_mesh.position.y + (_current_growth_rate / 2 * delta),
-			_min_vine_size / 2,
+			_min_vine_size,
 			_max_vine_size / 2
 	)
 
