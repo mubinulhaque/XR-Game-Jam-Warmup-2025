@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvdr7pt7a4w5b"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_024sg"]
+[ext_resource type="Texture2D" uid="uid://xdnnosmlseae" path="res://textures/rune_f_blue.png" id="2_ou4tv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ou4tv"]
+size = Vector3(0.25, 0.1, 0.43)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ti5gc"]
+cull_mode = 2
+albedo_texture = ExtResource("2_ou4tv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_024sg"]
+size = Vector2(0.25, 0.43)
+
+[node name="Rune" instance=ExtResource("1_024sg")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_ou4tv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_ti5gc")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_024sg")
