@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3gjr4703qjuy"]
+
+[ext_resource type="PackedScene" uid="uid://ds2o46apd08yu" path="res://scenes/scene_base.tscn" id="1_c13y7"]
+[ext_resource type="PackedScene" uid="uid://cq1nmq6fjnbd1" path="res://scenes/vines.tscn" id="2_8ho6b"]
+[ext_resource type="Material" uid="uid://cn2xsfovhc54" path="res://materials/prototype.tres" id="2_ph3nu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c13y7"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ho6b"]
+size = Vector3(10, 1, 10)
+
+[node name="TestingGround" instance=ExtResource("1_c13y7")]
+
+[node name="Floor" type="StaticBody3D" parent="." index="3"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" index="0"]
+material_override = ExtResource("2_ph3nu")
+mesh = SubResource("PlaneMesh_c13y7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_8ho6b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -3, 2, -5)
+material_override = ExtResource("2_ph3nu")
+use_collision = true
+size = Vector3(4, 4, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="5"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 3, 2, -5)
+material_override = ExtResource("2_ph3nu")
+use_collision = true
+size = Vector3(4, 4, 1)
+
+[node name="Vines" parent="." index="6" instance=ExtResource("2_8ho6b")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.5, 3, -5)
+_initial_vine_size = 2.5
+
+[node name="Vines2" parent="." index="7" instance=ExtResource("2_8ho6b")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.5, 3, -5)
+_initial_vine_size = 2.5

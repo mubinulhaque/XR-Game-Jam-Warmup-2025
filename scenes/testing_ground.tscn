@@ -63,7 +63,19 @@ collision_mask = 5242882
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 environment = SubResource("Environment_8eoxv")
 
-[node name="Floor" type="StaticBody3D" parent="." index="3"]
+[node name="Vines" parent="." index="3" instance=ExtResource("12_ujaxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+_initial_vine_size = 5.0
+
+[node name="Vines" parent="Vines" index="2" instance=ExtResource("12_ujaxs")]
+transform = Transform3D(-1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1, 3.5, 4, -1)
+_initial_vine_size = 2.0
+
+[node name="Vines2" parent="Vines" index="3" instance=ExtResource("12_ujaxs")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 4.5, 4, -1)
+_initial_vine_size = 2.0
+
+[node name="Floor" type="StaticBody3D" parent="." index="4"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" index="0"]
 mesh = SubResource("PlaneMesh_1awqq")
@@ -71,9 +83,6 @@ mesh = SubResource("PlaneMesh_1awqq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_l0hva")
-
-[node name="Vines" parent="Floor" index="2" instance=ExtResource("12_ujaxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 
 [connection signal="button_pressed" from="XROrigin3D/LeftHand" to="XROrigin3D" method="_on_left_hand_button_pressed"]
 [connection signal="button_released" from="XROrigin3D/LeftHand" to="XROrigin3D" method="_on_left_hand_button_released"]
