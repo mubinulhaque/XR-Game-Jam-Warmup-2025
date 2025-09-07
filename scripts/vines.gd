@@ -2,6 +2,9 @@ extends XRToolsInteractableBody
 
 const _GROWTH_RATE := 0.5
 
+@export var _min_vine_size := 1.0
+@export var _max_vine_size := 10.0
+
 var _capsule_col: BoxShape3D
 var _capsule_mesh: CapsuleMesh
 var _current_growth_rate := 0.0
@@ -22,11 +25,27 @@ func  _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_capsule_col.size.y += _current_growth_rate * delta
-	_capsule_mesh.height += _current_growth_rate * delta
+	_capsule_col.size.y = clamp(
+			_capsule_col.size.y + (_current_growth_rate * delta),
+			_min_vine_size,
+			_max_vine_size
+	)
+	_capsule_mesh.height = clamp(
+			_capsule_mesh.height + (_current_growth_rate * delta),
+			_min_vine_size,
+			_max_vine_size
+	)
 	
-	_collider.position.y += _current_growth_rate / 2 * delta
-	_mesh.position.y += _current_growth_rate / 2 * delta
+	_collider.position.y = clamp(
+			_collider.position.y + (_current_growth_rate / 2 * delta),
+			_min_vine_size / 2,
+			_max_vine_size / 2
+	)
+	_mesh.position.y = clamp(
+			_mesh.position.y + (_current_growth_rate / 2 * delta),
+			_min_vine_size / 2,
+			_max_vine_size / 2
+	)
 
 
 func _on_pointer_event(event: Variant) -> void:
